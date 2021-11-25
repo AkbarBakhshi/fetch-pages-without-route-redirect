@@ -2,7 +2,7 @@
 
 This repo includes the code for fetching different pages without redirecting users to other routes using plain Javascript. Check out this youtube video for details:
 
-
+part#1 video: https://youtu.be/gsS9YGbdeVY
 
 Download or clone the project on your local drive. Open Terminal (Command prompt) and navigate to the project folder. Then run ```npm install```. You should see a new folder called **node_modules** in the project folder.
 

@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-This repo includes the code for fetching different pages without redirecting users to other routes using plain Javascript. Check out this youtube video for details:
+This repo includes the code for fetching different pages without redirecting users to other routes using plain Javascript. Check out these youtube videos for details:
 
 part#1 video: https://youtu.be/LusENN3Sg2g
 

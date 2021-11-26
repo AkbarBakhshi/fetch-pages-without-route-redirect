@@ -4,11 +4,11 @@ import Four04 from 'pages/Four04'
 
 class App {
     constructor() {
-        // console.log('index app')
         this.createContent()
         this.createPages()
 
         this.addLinkListeners()
+        window.addEventListener('popstate', this.onPopState.bind(this))
     }
 
     createContent() {
@@ -26,21 +26,23 @@ class App {
         this.page.create()
     }
 
-    async onLocalLinkClick({ url }) {
+    async onLocalLinkClick({ url, push = true }) {
         const request = await window.fetch(url)
         // console.log(request)
 
         if (request.status === 200) {
             // console.log(request.text())
-            const div = document.createElement('div')
 
+            if (push) {
+                window.history.pushState({}, '', url)
+            }
+
+            const div = document.createElement('div')
             div.innerHTML = await request.text()
             // console.log(div.innerHTML)
 
             const divContent = div.querySelector('.content')
-
             this.template = divContent.getAttribute('data-template')
-
             this.content.setAttribute('data-template', this.template)
             this.content.innerHTML = divContent.innerHTML
 
@@ -70,6 +72,16 @@ class App {
             }
         })
     }
+
+    //===========this is when user clicks browser's back button=============
+    onPopState() {
+        // console.log(window.location.pathname)
+        this.onLocalLinkClick({
+            url: window.location.pathname,
+            push: false
+        })
+    }
+
 }
 
 new App()

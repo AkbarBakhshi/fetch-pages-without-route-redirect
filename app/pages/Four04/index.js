@@ -4,4 +4,13 @@ export default class Four04 {
     create() {
         // console.log('Four04 created')
     }
+
+
+    animateIn() {
+
+    }
+
+    animateOut() {
+
+    }
 }

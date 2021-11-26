@@ -24,15 +24,19 @@ class App {
         }
         this.page = this.pages[this.template]
         this.page.create()
+        this.page.animateIn()
     }
 
     async onLocalLinkClick({ url, push = true }) {
+
         const request = await window.fetch(url)
         // console.log(request)
 
         if (request.status === 200) {
             // console.log(request.text())
 
+            await this.page.animateOut()
+            
             if (push) {
                 window.history.pushState({}, '', url)
             }
@@ -43,11 +47,13 @@ class App {
 
             const divContent = div.querySelector('.content')
             this.template = divContent.getAttribute('data-template')
+
             this.content.setAttribute('data-template', this.template)
             this.content.innerHTML = divContent.innerHTML
 
             this.page = this.pages[this.template]
             this.page.create()
+            this.page.animateIn()
 
             this.addLinkListeners()
 
